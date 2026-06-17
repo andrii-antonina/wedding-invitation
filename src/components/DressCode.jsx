@@ -17,7 +17,7 @@ function DressCode() {
         <Ornament />
         <h2 className="section-title">ДРЕСКОД</h2>
         <p className="dresscode-text">
-          Ми будемо безмежно вдячні, якщо при виборі вбрання ви підтримаєте кольорову палтіру нашого свята.
+          Ми будемо безмежно вдячні, якщо при виборі вбрання ви підтримаєте кольорову палітру нашого свята.
         </p>
         <div className="swatches">
           {swatches.map((s, i) => (
