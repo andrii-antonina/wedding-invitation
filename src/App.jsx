@@ -1,4 +1,5 @@
 import Hero from './components/Hero.jsx'
+import WeddingDate from './components/WeddingDate.jsx'
 import SaveTheDate from './components/SaveTheDate.jsx'
 import Location from './components/Location.jsx'
 import Schedule from './components/Schedule.jsx'
@@ -12,9 +13,10 @@ function App() {
   return (
     <>
       <Hero />
-      <SaveTheDate />
-      <Location />
+      <WeddingDate />
       <MapLocation />
+      {/*<SaveTheDate />*/}
+      <Location />
       <Schedule />
       <Details />
       <DressCode />

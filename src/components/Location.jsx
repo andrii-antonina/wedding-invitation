@@ -40,7 +40,9 @@ function IconBuilding() {
 }
 
 function Location() {
-  return (
+    const mapsUrl = 'https://maps.app.goo.gl/W5emPRZHiLDW5kLY7'
+
+    return (
     <section className="section location-section">
       <div className="section-inner">
         <Ornament />
@@ -78,7 +80,7 @@ function Location() {
             </p>
             <a
               className="btn-dark"
-              href="https://maps.google.com/?q=Ресторан+Маєток"
+              href={mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
             >

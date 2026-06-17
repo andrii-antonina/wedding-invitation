@@ -2,12 +2,12 @@ import Ornament from './Ornament.jsx'
 
 const swatches = [
   { color: '#0a0a0a', label: 'тільки джентльмени', border: false },
-  { color: '#F5F0E8', label: null, border: true },
-  { color: '#D4C4A8', label: null, border: false },
+  { color: '#F4EFEB', label: null, border: true },
+  { color: '#DDCFC2', label: null, border: false },
   { color: '#E8B0B4', label: null, border: false },
-  { color: '#9B8F98', label: null, border: false },
-  { color: '#8B5B4A', label: null, border: false },
-  { color: '#6B7B4A', label: null, border: false },
+  { color: '#A29390', label: null, border: false },
+  { color: '#7B5040', label: null, border: false },
+  { color: '#737953', label: null, border: false },
 ]
 
 function DecoCorner({ className }) {

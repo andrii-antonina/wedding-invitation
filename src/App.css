@@ -118,7 +118,8 @@ body {
 .hero-section {
   text-align: center;
   gap: 0;
-  padding: 60px 24px 56px;
+  padding: 52px 24px 48px;
+  min-height: unset;
 }
 
 .hero-script {
@@ -176,12 +177,15 @@ body {
 .hero-photo {
   width: 100%;
   max-width: 420px;
+  max-height: 55vh;
   margin: 0 auto 32px;
+  overflow: hidden;
 }
 
 .hero-photo-placeholder {
   width: 100%;
   aspect-ratio: 3 / 4;
+  max-height: 55vh;
   background-color: var(--border);
   display: flex;
   align-items: center;
@@ -636,6 +640,94 @@ body {
 }
 
 /* ============================================================
+   Wedding Date Section
+   ============================================================ */
+.wd-section {
+  background-color: var(--white);
+  min-height: unset;
+  padding: 80px 24px;
+}
+
+.wd-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+  max-width: 640px;
+}
+
+.wd-date-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.wd-branch-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wd-diamond {
+  width: 7px;
+  height: 7px;
+  background-color: var(--gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.wd-date-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  padding: 8px 0;
+}
+
+.wd-day {
+  font-family: var(--font-serif);
+  font-size: 110px;
+  font-weight: 500;
+  color: var(--dark);
+  line-height: 0.95;
+  letter-spacing: -2px;
+}
+
+.wd-month {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--gold);
+  line-height: 1.2;
+  letter-spacing: 1px;
+}
+
+.wd-year {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 6px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+.wd-text {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.8;
+  text-align: center;
+  max-width: 520px;
+}
+
+/* ============================================================
    Save The Date Section
    ============================================================ */
 .save-date-section {
@@ -787,11 +879,11 @@ body {
 
 .swatch-label {
   font-family: var(--font-serif);
-  font-size: 11px;
+  font-size: 13px;
   font-style: italic;
-  color: var(--gold);
+  color: var(--dark);
   text-align: center;
-  max-width: 70px;
+  max-width: 80px;
   line-height: 1.3;
 }
 
