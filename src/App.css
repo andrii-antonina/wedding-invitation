@@ -118,8 +118,19 @@ body {
 .hero-section {
   text-align: center;
   gap: 0;
-  padding: 52px 24px 48px;
-  min-height: unset;
+  padding: 50px 24px 48px !important;
+  height: 100vh;
+  justify-content: start;
+}
+
+.hero-rings {
+  position: absolute;
+  width: 160px;
+  opacity: 0.10;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 
 .hero-script {
@@ -143,6 +154,7 @@ body {
   max-width: 420px;
   margin-bottom: 32px;
   gap: 0;
+  position: relative;
 }
 
 .hero-names-first {
@@ -161,9 +173,12 @@ body {
   align-self: center;
   margin-top: -0.35em;
   margin-bottom: -0.35em;
-  position: relative;
   z-index: 1;
   letter-spacing: 2px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .hero-names-last {
