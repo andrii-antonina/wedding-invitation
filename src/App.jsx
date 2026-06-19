@@ -9,7 +9,7 @@ import Details from './components/Details.jsx'
 import DressCode from './components/DressCode.jsx'
 import MapLocation from './components/MapLocation.jsx'
 import RSVP from './components/RSVP.jsx'
-import Countdown from './components/Countdown.jsx'
+import Footer from './components/Countdown.jsx'
 
 function App() {
   const [opened, setOpened] = useState(false)
@@ -29,7 +29,7 @@ function App() {
       <Details />
       <DressCode />
       <RSVP />
-      <Countdown />
+      <Footer />
     </>
   )
 }

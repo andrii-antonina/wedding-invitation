@@ -28,7 +28,6 @@ function RSVP() {
             <p className="rsvp-text">
               Будь ласка, заповніть цю коротку анкету, щоб допомогти нам врахувати кожну деталь нашої святкової зустрічі.
             </p>
-            <p className="rsvp-signature">З любов&apos;ю, Андрій та Антоніна</p>
           </div>
           <div className="rsvp-card">
             {submitted ? (
