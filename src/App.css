@@ -1,4 +1,159 @@
 /* ============================================================
+   Custom Fonts
+   ============================================================ */
+@font-face {
+  font-family: 'BodegaScript';
+  src: url('/fonts/BodegaScript.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
+   Splash / Envelope Screen
+   ============================================================ */
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: #787c59;
+  font-family: BodegaScript, cursive;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+}
+
+.splash--opening {
+  animation: splash-fade-out 1.1s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes splash-fade-out {
+  0%   { opacity: 1; transform: scale(1) translateY(0); }
+  55%  { opacity: 1; transform: scale(1) translateY(0); }
+  100% { opacity: 0; transform: scale(0.96) translateY(-12px); }
+}
+
+/* ---- Top flap ---- */
+.splash-flap-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 50% 100%, 0 40%);
+  background: rgba(255, 255, 255, 0.07);
+  transform-origin: 50% 0;
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  pointer-events: none;
+}
+
+.splash-flap-top--open {
+  transform: perspective(900px) rotateX(-165deg);
+}
+
+.splash-flap-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  clip-path: polygon(0 60%, 50% 0, 100% 60%, 100% 100%, 0 100%);
+  background: #828565;
+  transform-origin: 50% 100%;
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.splash-flap-bottom--open {
+  transform: perspective(900px) rotateX(165deg);
+}
+
+.splash-envelope-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.splash-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  max-width: 360px;
+  padding: 0 24px;
+}
+
+.splash-invite {
+  font-family: BodegaScript, cursive;
+  font-size: 42px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 60px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+}
+
+.splash-seal-btn {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 64px;
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.35));
+  transition: filter 0.25s ease, transform 0.25s ease;
+}
+
+.splash:not(.splash--opening):hover .splash-seal-btn {
+  transform: scale(1.05);
+  filter: drop-shadow(0 6px 24px rgba(0, 0, 0, 0.45));
+}
+
+.splash-seal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.splash-names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.splash-name {
+  font-size: 54px;
+  color: #ffffff;
+  line-height: 1.15;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  letter-spacing: 0.5px;
+}
+
+.splash-ta {
+  font-size: 34px;
+  color: #ffffff;
+  line-height: 1.2;
+  opacity: 0.85;
+}
+
+/* ============================================================
    CSS Reset
    ============================================================ */
 *,

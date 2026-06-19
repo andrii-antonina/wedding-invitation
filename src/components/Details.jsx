@@ -58,7 +58,7 @@ function Details() {
             </div>
             <div className="details-card-title">Подарунки</div>
             <p className="details-card-text">
-              Будемо щиро вдячні за ваші подарунки виключно в конвертах.
+              Будемо щиро вдячні за ваші подарунки в конвертах.
             </p>
           </div>
           <div className="details-card">

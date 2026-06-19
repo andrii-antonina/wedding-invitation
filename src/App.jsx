@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import Splash from './components/Splash.jsx'
 import Hero from './components/Hero.jsx'
 import WeddingDate from './components/WeddingDate.jsx'
 import SaveTheDate from './components/SaveTheDate.jsx'
@@ -10,11 +12,17 @@ import RSVP from './components/RSVP.jsx'
 import Countdown from './components/Countdown.jsx'
 
 function App() {
+  const [opened, setOpened] = useState(false)
+
+  if (!opened) {
+    return <Splash onOpen={() => setOpened(true)} />
+  }
+
   return (
     <>
       <Hero />
-      <WeddingDate />
-      <MapLocation />
+      {/*<WeddingDate />*/}
+      {/*<MapLocation />*/}
       {/*<SaveTheDate />*/}
       <Location />
       <Schedule />
