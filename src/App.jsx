@@ -13,10 +13,10 @@ import Countdown from './components/Countdown.jsx'
 
 function App() {
   const [opened, setOpened] = useState(false)
-
-  if (!opened) {
-    return <Splash onOpen={() => setOpened(true)} />
-  }
+  //
+  // if (!opened) {
+  //   return <Splash onOpen={() => setOpened(true)} />
+  // }
 
   return (
     <>
