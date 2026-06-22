@@ -169,7 +169,7 @@
    ============================================================ */
 :root {
   --gold: #C4A35A;
-  --dark: #1a1a1a;
+  --dark: #3a3228;
   --bg: #F8F6F1;
   --white: #ffffff;
   --border: #E8E4DC;
@@ -1145,13 +1145,13 @@ body {
 .rsvp-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 11px;
 }
 
 .form-label {

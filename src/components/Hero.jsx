@@ -23,7 +23,7 @@ function HeroCountdown() {
   }, [])
   return (
     <div className="hero-countdown">
-      <p className="hero-countdown-label">до урочистого дня залишилось</p>
+      <p className="hero-countdown-label">до дня весілля залишилось</p>
       <div className="hero-countdown-strip">
         <div className="hero-countdown-unit">
           <span className="hero-countdown-num">{pad(timeLeft.days)}</span>

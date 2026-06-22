@@ -26,7 +26,7 @@ function RSVP() {
           <div className="rsvp-left">
             <h2 className="rsvp-heading">ЧЕКАЄМО НА ВАШУ ВІДПОВІДЬ</h2>
             <p className="rsvp-text">
-              Будь ласка, заповніть цю коротку анкету, щоб допомогти нам врахувати кожну деталь нашої святкової зустрічі.
+              Будь ласка, заповніть цю коротку анкету
             </p>
           </div>
           <div className="rsvp-card">
@@ -36,7 +36,7 @@ function RSVP() {
               <form className="rsvp-form" onSubmit={handleSubmit}>
                 <div className="form-group">
                   <label className="form-label" htmlFor="rsvp-name">
-                    ВАШЕ ІМ&apos;Я ТА ПРІЗВИЩЕ
+                    Ваше ім&apos;я та прізвище
                   </label>
                   <input
                     id="rsvp-name"
@@ -48,7 +48,7 @@ function RSVP() {
                   />
                 </div>
                 <div className="form-group">
-                  <span className="form-label">ЧИ ЗМОЖЕТЕ ЗАВІТАТИ?</span>
+                  <span className="form-label">ЧИ ЗМОЖЕШ ТИ РОЗДІЛИТИ З НАМИ ЦЕЙ ОСОБЛИВИЙ ДЕНЬ?</span>
                   <div className="radio-group">
                     <label className="radio-option" htmlFor="rsvp-yes">
                       <input
@@ -78,7 +78,7 @@ function RSVP() {
                       <div className={`radio-circle${attendance === 'no' ? ' selected' : ''}`}>
                         {attendance === 'no' && <div className="radio-circle-inner" />}
                       </div>
-                      <span className="radio-text">На жаль, не вдасться</span>
+                      <span className="radio-text">На жаль, не зможу прийти</span>
                     </label>
                   </div>
                 </div>

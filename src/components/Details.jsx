@@ -58,7 +58,7 @@ function Details() {
             </div>
             <div className="details-card-title">Подарунки</div>
             <p className="details-card-text">
-              Будемо щиро вдячні за ваші подарунки в конвертах.
+              Будемо щиро вдячні за ваші подарунки в конвертах
             </p>
           </div>
           <div className="details-card">
@@ -68,7 +68,7 @@ function Details() {
             <div className="details-card-title">Замість квітів</div>
             <p className="details-card-text">
               Замість традиційних букетів ви можете обрати для нас пляшку вашого улюбленого
-              алкоголю.
+              алкоголю
             </p>
           </div>
         </div>
