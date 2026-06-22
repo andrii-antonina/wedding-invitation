@@ -32,6 +32,7 @@ export default function Splash({ onOpen }) {
     <div
       className={`splash${exiting ? ' splash--exit' : ''}`}
       onClick={handleTap}
+      onTouchEnd={handleTap}
       style={{ touchAction: 'none', overscrollBehavior: 'none' }}
     >
 
