@@ -10,6 +10,7 @@ export default function Splash({ onOpen }) {
   const [exiting, setExiting] = useState(false)
   const [cursorPos, setCursorPos] = useState(null)
   const triggered = useRef(false)
+  const touchStart = useRef(null)
 
   const handleProgress = useCallback((pct) => {
     if (pct > 0.80 && !triggered.current) {
@@ -28,11 +29,25 @@ export default function Splash({ onOpen }) {
     setTimeout(onOpen, 900)
   }
 
+  function handleTouchStart(e) {
+    const t = e.touches[0]
+    touchStart.current = { x: t.clientX, y: t.clientY }
+  }
+
+  function handleTouchEnd(e) {
+    if (!touchStart.current) return
+    const t = e.changedTouches[0]
+    const moved = Math.abs(t.clientX - touchStart.current.x) + Math.abs(t.clientY - touchStart.current.y)
+    touchStart.current = null
+    if (moved < 15) handleTap()
+  }
+
   return (
     <div
       className={`splash${exiting ? ' splash--exit' : ''}`}
       onClick={handleTap}
-      onTouchEnd={handleTap}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
       style={{ touchAction: 'none', overscrollBehavior: 'none' }}
     >
 
@@ -72,7 +87,7 @@ export default function Splash({ onOpen }) {
         </p>
       )}
 
-      {!started && !cursorPos && !revealed && (
+      {!revealed && (
         <p className="splash__prompt">
           <SwipeOutlinedIcon sx={{ width: 18, height: 18, verticalAlign: 'middle', marginRight: '8px' }} />
           стирайте серце
