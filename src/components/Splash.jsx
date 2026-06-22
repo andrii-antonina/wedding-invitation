@@ -1,43 +1,69 @@
-import { useState } from 'react'
-import sealImg from '../assets/seal.webp'
+import { useState, useCallback, useRef } from 'react'
+import ScratchHeart from './ScratchHeart.jsx'
+import SwipeOutlinedIcon from '@mui/icons-material/SwipeOutlined'
+import AdsClickOutlinedIcon from '@mui/icons-material/AdsClickOutlined'
 
 export default function Splash({ onOpen }) {
-  const [pressed, setPressed] = useState(false)
+  const [started, setStarted] = useState(false)
+  const [revealed, setRevealed] = useState(false)
+  const [exiting, setExiting] = useState(false)
+  const [cursorPos, setCursorPos] = useState(null)
+  const triggered = useRef(false)
 
-  const handleClick = () => {
-    if (pressed) return
-    setPressed(true)
-    setTimeout(onOpen, 1100)
+  const handleProgress = useCallback((pct) => {
+    if (pct > 0.80 && !triggered.current) {
+      triggered.current = true
+      setRevealed(true)
+    }
+  }, [])
+
+  function handleTap() {
+    if (!revealed || exiting) return
+    setExiting(true)
+    setTimeout(onOpen, 900)
   }
 
   return (
-    <div
-      className={`splash${pressed ? ' splash--opening' : ''}`}
-      onClick={handleClick}
-    >
-      <svg className="splash-envelope-svg" viewBox="0 0 866 1018" preserveAspectRatio="none">
-      </svg>
+    <div className={`splash${exiting ? ' splash--exit' : ''}`} onClick={handleTap}>
 
-      {/* Top flap — animated on open */}
-      <div className={`splash-flap-top${pressed ? ' splash-flap-top--open' : ''}`} />
-      {/* Bottom flap — animated on open */}
-      <div className={`splash-flap-bottom${pressed ? ' splash-flap-bottom--open' : ''}`} />
-
-      <div className="splash-content">
-        <p className="splash-invite">
-          Запрошення<br />на весілля
-        </p>
-
-        <div className="splash-seal-btn">
-          <img src={sealImg} alt="Печатка" className="splash-seal-img" />
-        </div>
-
-        <div className="splash-names">
-          <span className="splash-name">Андрій</span>
-          <span className="splash-ta">та</span>
-          <span className="splash-name">Антоніна</span>
-        </div>
+      {/* Invitation text — visible through scratched areas */}
+      <div className="splash-invite-text">
+        <p className="splash-invite-label">Вас запрошено<br />на весілля</p>
+        <div className="splash-invite-rule" />
+        <p className="splash-invite-names">Андрій та Антоніна</p>
+        <p className="splash-invite-date">13 вересня 2026</p>
       </div>
+
+      <ScratchHeart
+        className="splash-canvas"
+        onScratchStart={() => setStarted(true)}
+        onProgress={handleProgress}
+        onCursorMove={setCursorPos}
+        onCursorLeave={() => setCursorPos(null)}
+      />
+
+      {/* Custom cursor */}
+      {!started && cursorPos && (
+        <div className="save-date-cursor"
+             style={{ left: cursorPos.x, top: cursorPos.y }}
+             aria-hidden="true">
+          <SwipeOutlinedIcon sx={{ width: '35px', height: '35px', color: 'rgba(255,255,255,0.95)' }} />
+        </div>
+      )}
+
+      {revealed && (
+        <p className="splash__prompt splash__prompt--tap">
+          <AdsClickOutlinedIcon sx={{ width: 18, height: 18, verticalAlign: 'middle', marginRight: '8px' }} />
+          Натисніть на екран
+        </p>
+      )}
+
+      {!started && !cursorPos && !revealed && (
+        <p className="splash__prompt">
+          <SwipeOutlinedIcon sx={{ width: 18, height: 18, verticalAlign: 'middle', marginRight: '8px' }} />
+          стирайте серце
+        </p>
+      )}
     </div>
   )
 }

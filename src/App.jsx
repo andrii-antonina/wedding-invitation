@@ -13,17 +13,14 @@ import Footer from './components/Countdown.jsx'
 
 function App() {
   const [opened, setOpened] = useState(false)
-  //
-  // if (!opened) {
-  //   return <Splash onOpen={() => setOpened(true)} />
-  // }
 
   return (
     <>
+      {!opened && <Splash onOpen={() => setOpened(true)} />}
       <Hero />
       {/*<WeddingDate />*/}
       {/*<MapLocation />*/}
-      {/*<SaveTheDate />*/}
+      <SaveTheDate />
       <Location />
       <Schedule />
       <Details />
