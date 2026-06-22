@@ -4,6 +4,7 @@ import SwipeOutlinedIcon from '@mui/icons-material/SwipeOutlined'
 import AdsClickOutlinedIcon from '@mui/icons-material/AdsClickOutlined'
 
 export default function Splash({ onOpen }) {
+  const [ready, setReady] = useState(false)
   const [started, setStarted] = useState(false)
   const [revealed, setRevealed] = useState(false)
   const [exiting, setExiting] = useState(false)
@@ -30,8 +31,8 @@ export default function Splash({ onOpen }) {
   return (
     <div className={`splash${exiting ? ' splash--exit' : ''}`} onClick={handleTap}>
 
-      {/* Invitation text — visible through scratched areas */}
-      <div className="splash-invite-text">
+      {/* Invitation text — only rendered once scratching begins */}
+      <div className="splash-invite-text" style={{ display: started ? 'flex' : 'none' }}>
         <p className="splash-invite-label">Вас запрошено<br />на весілля</p>
         <div className="splash-invite-rule" />
         <p className="splash-invite-names">Андрій та Антоніна</p>
@@ -42,6 +43,7 @@ export default function Splash({ onOpen }) {
         className="splash-canvas"
         onScratchStart={() => setStarted(true)}
         onProgress={handleProgress}
+        onReady={() => setReady(true)}
         onCursorMove={setCursorPos}
         onCursorLeave={() => setCursorPos(null)}
       />
@@ -54,6 +56,9 @@ export default function Splash({ onOpen }) {
           <SwipeOutlinedIcon sx={{ width: '35px', height: '35px', color: 'rgba(255,255,255,0.95)' }} />
         </div>
       )}
+
+      {/* Cover until heart image is loaded */}
+      {!ready && <div className="splash-cover" />}
 
       {revealed && (
         <p className="splash__prompt splash__prompt--tap">

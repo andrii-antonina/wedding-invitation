@@ -20,7 +20,7 @@ function App() {
       <Hero />
       {/*<WeddingDate />*/}
       {/*<MapLocation />*/}
-      <SaveTheDate />
+      {/*<SaveTheDate />*/}
       <Location />
       <Schedule />
       <Details />

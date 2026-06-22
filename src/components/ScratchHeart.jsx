@@ -24,7 +24,7 @@ function heartPath(ctx, cx, cy, r) {
  *   onCursorLeave        — pointer left the canvas
  *   className            — extra CSS class on the <canvas>
  */
-export default function ScratchHeart({ onScratchStart, onProgress, onCursorMove, onCursorLeave, className = '' }) {
+export default function ScratchHeart({ onScratchStart, onProgress, onCursorMove, onCursorLeave, onReady, className = '' }) {
   const canvasRef   = useRef(null)
   const drawing     = useRef(false)
   const strokeCount = useRef(0)
@@ -41,18 +41,27 @@ export default function ScratchHeart({ onScratchStart, onProgress, onCursorMove,
     const cy = H / 2 + 8
     const r  = SIZE * 0.44
 
+    // Fill background immediately so canvas is never transparent
+    ctx.fillStyle = '#F5F0E8'
+    ctx.fillRect(0, 0, W, H)
+    onReady?.()
+
     const img = new Image()
     img.src = goldSrc
     img.onload = () => {
+      // Redraw background + gold heart
+      ctx.clearRect(0, 0, W, H)
+      ctx.fillStyle = '#F5F0E8'
+      ctx.fillRect(0, 0, W, H)
+
+      // Draw gold heart on top
       ctx.save()
       heartPath(ctx, cx, cy, r)
       ctx.clip()
-
       const scale = Math.max(W / img.naturalWidth, H / img.naturalHeight)
       const iw = img.naturalWidth  * scale
       const ih = img.naturalHeight * scale
       ctx.drawImage(img, (W - iw) / 2, (H - ih) / 2, iw, ih)
-
       const vignette = ctx.createRadialGradient(cx, cy - r * 0.1, r * 0.25, cx, cy, r * 1.08)
       vignette.addColorStop(0,    'rgba(0,0,0,0)')
       vignette.addColorStop(0.65, 'rgba(0,0,0,0)')
@@ -61,13 +70,8 @@ export default function ScratchHeart({ onScratchStart, onProgress, onCursorMove,
       ctx.fillRect(0, 0, W, H)
       ctx.restore()
 
-      // Store initial opaque pixel count for accurate coverage tracking
-      const data = ctx.getImageData(0, 0, W, H).data
-      let count = 0
-      for (let i = 3; i < data.length; i += 4) {
-        if (data[i] > 10) count++
-      }
-      initialOpaque.current = count
+      // Heart area in pixels (used for progress %)
+      initialOpaque.current = Math.PI * r * r
     }
   }, [])
 
@@ -110,18 +114,37 @@ export default function ScratchHeart({ onScratchStart, onProgress, onCursorMove,
     strokeCount.current++
     if (strokeCount.current % 8 === 0 && initialOpaque.current > 0) {
       const data = ctx.getImageData(0, 0, SIZE, SIZE).data
-      let remaining = 0
+      let transparent = 0
       for (let i = 3; i < data.length; i += 4) {
-        if (data[i] > 10) remaining++
+        if (data[i] < 10) transparent++
       }
-      onProgress?.(1 - remaining / initialOpaque.current)
+      onProgress?.(transparent / initialOpaque.current)
     }
   }
 
-  const onStart  = (e) => { e.preventDefault(); drawing.current = true; onCursorMove?.(getCSSPos(e)); scratch(e) }
-  const onMove   = (e) => { e.preventDefault(); onCursorMove?.(getCSSPos(e)); scratch(e) }
-  const onEnd    = ()  => { drawing.current = false; onCursorLeave?.() }
-  const onLeave  = ()  => { drawing.current = false; onCursorLeave?.() }
+  const onMouseDown = (e) => { drawing.current = true; onCursorMove?.(getCSSPos(e)); scratch(e) }
+  const onMouseMove = (e) => { onCursorMove?.(getCSSPos(e)); scratch(e) }
+  const onEnd       = ()  => { drawing.current = false; onCursorLeave?.() }
+
+  // Touch events must be added manually with passive:false to allow preventDefault
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const onTouchStart = (e) => { e.preventDefault(); drawing.current = true; onCursorMove?.(getCSSPos(e)); scratch(e) }
+    const onTouchMove  = (e) => { e.preventDefault(); onCursorMove?.(getCSSPos(e)); scratch(e) }
+    const onTouchEnd   = ()  => { drawing.current = false; onCursorLeave?.() }
+
+    canvas.addEventListener('touchstart', onTouchStart, { passive: false })
+    canvas.addEventListener('touchmove',  onTouchMove,  { passive: false })
+    canvas.addEventListener('touchend',   onTouchEnd,   { passive: false })
+
+    return () => {
+      canvas.removeEventListener('touchstart', onTouchStart)
+      canvas.removeEventListener('touchmove',  onTouchMove)
+      canvas.removeEventListener('touchend',   onTouchEnd)
+    }
+  }, [])
 
   return (
     <canvas
@@ -129,13 +152,10 @@ export default function ScratchHeart({ onScratchStart, onProgress, onCursorMove,
       width={SIZE}
       height={SIZE}
       className={`scratch-heart-canvas${className ? ` ${className}` : ''}`}
-      onMouseDown={onStart}
-      onMouseMove={onMove}
+      onMouseDown={onMouseDown}
+      onMouseMove={onMouseMove}
       onMouseUp={onEnd}
-      onMouseLeave={onLeave}
-      onTouchStart={onStart}
-      onTouchMove={onMove}
-      onTouchEnd={onEnd}
+      onMouseLeave={onEnd}
       style={{ touchAction: 'none', cursor: 'none' }}
     />
   )
