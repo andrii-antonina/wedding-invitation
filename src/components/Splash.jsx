@@ -14,8 +14,12 @@ export default function Splash({ onOpen }) {
     if (pct > 0.80 && !triggered.current) {
       triggered.current = true
       setRevealed(true)
+      setTimeout(() => {
+        setExiting(true)
+        setTimeout(onOpen, 900)
+      }, 5000)
     }
-  }, [])
+  }, [onOpen])
 
   function handleTap() {
     if (!revealed || exiting) return
