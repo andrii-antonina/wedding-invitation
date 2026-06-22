@@ -37,34 +37,84 @@
   to { transform: translateY(-100%); }
 }
 
-/* ── Scratch-heart splash ────────────────────── */
 @keyframes envFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Invitation text — centered, always visible behind canvas */
-.splash-invite-text {
-  position: absolute;
+@keyframes envFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* ── Envelope splash ────────────────────── */
+.splash-env-wrap {
+  position: relative;
+  width: min(320px, 85vw);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+}
+
+.splash-envelope {
+  position: relative;
+  z-index: 2;
+  width: min(320px, 85vw);
+  animation: envFadeIn 0.8s ease both, envFloat 3s ease-in-out 1s infinite;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #F1E8E0;
+  filter: drop-shadow(0 8px 18px rgba(80, 60, 30, 0.18))
+          drop-shadow(0 2px 4px rgba(80, 60, 30, 0.12));
+  border-radius: 3px;
+}
+
+.splash-envelope--open {
+  animation: none;
+  transform: translateY(48px);
+}
+
+.splash-envelope img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.splash-letter {
+  position: absolute;
+  bottom: 40%;
+  left: 50%;
+  transform: translateX(-50%) translateY(0px);
+  width: 84%;
+  z-index: 1;
+  background: #fffdf8;
+  border: 1px solid rgba(180,155,100,0.2);
+  padding: 28px 20px 24px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1) 0.15s,
+              opacity   0.5s  ease                          0.15s;
   pointer-events: none;
-  animation: envFadeIn 0.6s ease both;
+}
+
+.splash-letter--open {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-110%);
 }
 
 .splash-invite-label {
-  font-family: BodegaScript, cursive;
-  font-size: clamp(30px, 9vw, 42px);
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 6.5vw, 32px);
   color: var(--dark);
-  line-height: 1.2;
+  line-height: 1.25;
   margin: 0;
 }
 
 .splash-invite-rule {
-  width: 48px;
+  width: 40px;
   height: 1px;
   background: var(--gold);
   opacity: 0.5;
@@ -72,7 +122,7 @@
 
 .splash-invite-names {
   font-family: var(--font-serif);
-  font-size: clamp(18px, 5vw, 24px);
+  font-size: clamp(15px, 4.5vw, 20px);
   font-style: italic;
   color: var(--text-muted);
   margin: 0;
@@ -103,7 +153,6 @@
   z-index: 2;
   width: min(360px, 92vw);
   height: min(360px, 92vw);
-  animation: envFadeIn 0.9s ease both;
 }
 
 /* Swipe hint */
