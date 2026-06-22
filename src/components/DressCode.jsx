@@ -2,7 +2,7 @@ import Ornament from './Ornament.jsx'
 
 const swatches = [
   { color: '#0a0a0a', label: 'тільки джентльмени', border: false },
-  { color: '#F4EFEB', label: null, border: true },
+  { color: '#E8DCC8', label: null, border: false },
   { color: '#DDCFC2', label: null, border: false },
   { color: '#E8B0B4', label: null, border: false },
   { color: '#A29390', label: null, border: false },
