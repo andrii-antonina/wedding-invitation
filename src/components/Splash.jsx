@@ -29,7 +29,11 @@ export default function Splash({ onOpen }) {
   }
 
   return (
-    <div className={`splash${exiting ? ' splash--exit' : ''}`} onClick={handleTap}>
+    <div
+      className={`splash${exiting ? ' splash--exit' : ''}`}
+      onClick={handleTap}
+      style={{ touchAction: 'none', overscrollBehavior: 'none' }}
+    >
 
       {/* Invitation text — only rendered once scratching begins */}
       <div className="splash-invite-text" style={{ display: started ? 'flex' : 'none' }}>
