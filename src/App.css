@@ -1125,6 +1125,7 @@ body {
   color: var(--dark);
   line-height: 1.1;
   letter-spacing: 1px;
+  text-align: center;
 }
 
 .rsvp-text {
@@ -1133,6 +1134,7 @@ body {
   font-weight: 400;
   color: var(--text-muted);
   line-height: 1.8;
+  text-align: center;
 }
 
 .rsvp-card {
