@@ -18,8 +18,8 @@ function Location() {
 
           <div className="loc-details">
             <div className="loc-detail-item">
-              <span className="loc-detail-value">13 вересня 2026</span>
               <span className="loc-detail-key">дата</span>
+              <span className="loc-detail-value">13 вересня 2026</span>
             </div>
           </div>
 

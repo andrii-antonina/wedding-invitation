@@ -50,7 +50,7 @@ function Details() {
     <section className="section details-section">
       <div className="section-inner">
         <Ornament />
-        <h2 className="section-title">ДЕТАЛІ ТА ПОБАЖАННЯ</h2>
+        <h2 className="section-title">ПОБАЖАННЯ</h2>
         <div className="details-cards">
           <div className="details-card">
             <div className="details-card-icon">
