@@ -10,6 +10,7 @@ import DressCode from './components/DressCode.jsx'
 import MapLocation from './components/MapLocation.jsx'
 import RSVP from './components/RSVP.jsx'
 import Footer from './components/Countdown.jsx'
+import SplashScreen from "./components/SplashScreen.jsx";
 
 function App() {
   const [opened, setOpened] = useState(false)
@@ -17,6 +18,7 @@ function App() {
   return (
     <>
       {!opened && <Splash onOpen={() => setOpened(true)} />}
+        {/*{!opened && <SplashScreen onDismiss={() => setOpened(true)} />}*/}
       <Hero />
       {/*<WeddingDate />*/}
       {/*<MapLocation />*/}
