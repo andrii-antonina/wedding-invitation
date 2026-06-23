@@ -1,13 +1,17 @@
 import Ornament from './Ornament.jsx'
 
+const gentsSwatches = [
+  { color: '#0a0a0a', border: false },
+  { color: '#fff',    border: true },
+]
+
 const swatches = [
-  { color: '#0a0a0a', label: 'тільки джентльмени', border: false },
-  { color: '#E8DCC8', label: null, border: false },
-  { color: '#DDCFC2', label: null, border: false },
-  { color: '#E8B0B4', label: null, border: false },
-  { color: '#A29390', label: null, border: false },
-  { color: '#7B5040', label: null, border: false },
-  { color: '#737953', label: null, border: false },
+  { color: '#E8DCC8', border: false },
+  { color: '#DDCFC2', border: false },
+  { color: '#E8B0B4', border: false },
+  { color: '#A29390', border: false },
+  { color: '#7B5040', border: false },
+  { color: '#737953', border: false },
 ]
 
 /* Top-left — гілка виходить знизу-зліва, розгалужується вгору */
@@ -296,6 +300,23 @@ function DressCode() {
           Ми будемо безмежно вдячні, якщо при виборі вбрання ви підтримаєте кольорову палітру нашого свята
         </p>
         <div className="swatches">
+          {/* Grouped gents swatches with single label */}
+          <div className="swatch-wrapper">
+            <div className="swatches-gents-row">
+              {gentsSwatches.map((s, i) => (
+                <div
+                  key={i}
+                  className="swatch"
+                  style={{
+                    backgroundColor: s.color,
+                    border: s.border ? '1px solid #C8C4BC' : 'none',
+                  }}
+                />
+              ))}
+            </div>
+            <span className="swatch-label">тільки джентльмени</span>
+          </div>
+
           {swatches.map((s, i) => (
             <div className="swatch-wrapper" key={i}>
               <div
@@ -305,7 +326,6 @@ function DressCode() {
                   border: s.border ? '1px solid #C8C4BC' : 'none',
                 }}
               />
-              {s.label && <span className="swatch-label">{s.label}</span>}
             </div>
           ))}
         </div>
