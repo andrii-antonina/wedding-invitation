@@ -270,8 +270,8 @@ body {
 .hero-section {
   display: flex;
   flex-direction: column;
-  height: 100vh;
   height: 100svh;
+  max-height: 100svh;
   overflow: hidden;
   background-color: var(--white);
   position: relative;
@@ -308,7 +308,7 @@ body {
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  padding: 60px 24px 90px 24px;
+  padding: 60px 24px 60px 24px;
   text-align: center;
 }
 
@@ -1461,7 +1461,59 @@ body {
     margin-bottom: 36px;
   }
 
-  /* Hero */
+  .hero-top-invite {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .hero-top-leaf {
+    width: 120px;
+  }
+
+  .hero-top-block {
+    gap: 10px;
+  }
+
+  .hero-bottom-block {
+    gap: 28px;
+  }
+
+  .hero-top-date {
+    font-size: 36px;
+  }
+
+  .hero-names-wrap {
+    transform: translateY(-44px);
+  }
+
+
+  .hero-countdown-label {
+    font-size: 8px;
+    letter-spacing: 2px;
+  }
+
+  .hero-countdown-unit {
+    min-width: 58px;
+    padding: 8px 6px 6px;
+  }
+
+  .hero-countdown-num {
+    font-size: 28px;
+  }
+
+  .hero-countdown-key {
+    font-size: 7px;
+  }
+
+  .hero-scroll-arrow {
+    font-size: 26px;
+  }
+
+  .hero-bottom-text {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+  }
+
   .hero-names {
     font-size: 48px;
   }
