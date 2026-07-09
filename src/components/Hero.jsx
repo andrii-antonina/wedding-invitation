@@ -46,30 +46,19 @@ function HeroCountdown() {
 function Hero() {
   return (
     <section className="hero-section">
-      {/* Top bar */}
-      <div className="hero-top">
+      {/* Background photo */}
+      <img className="hero-bg" src={heroPhoto} alt="Андрій та Антоніна" />
+
+      {/* Dark overlay */}
+      <div className="hero-overlay" />
+
+      {/* Content */}
+      <div className="hero-content">
         <p className="hero-top-invite">Запрошуємо вас на наше весілля</p>
-        <p className="hero-top-date">Андрій та Антоніна</p>
-
-      </div>
-
-      {/* Full-screen photo */}
-      <div className="hero-photo">
-        <img src={heroPhoto} alt="Андрій та Антоніна" />
-      </div>
-
-      {/* Bottom bar */}
-      <div className="hero-bottom">
-        {/*<h1 className="hero-names">*/}
-        {/*  <span className="hero-names-first">Андрій</span>*/}
-        {/*  <span className="hero-names-divider">*/}
-        {/*    <span className="hero-names-line" />*/}
-        {/*    <span className="hero-names-ta">та</span>*/}
-        {/*    <span className="hero-names-line" />*/}
-        {/*  </span>*/}
-        {/*  <span className="hero-names-last">Антоніна</span>*/}
-        {/*</h1>*/}
-        <HeroCountdown />
+        <div className="hero-bottom-block">
+          <p className="hero-top-date">Андрій та Антоніна</p>
+          <HeroCountdown />
+        </div>
       </div>
     </section>
   )

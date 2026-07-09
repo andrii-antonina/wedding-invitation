@@ -2,10 +2,10 @@ import Ornament from './Ornament.jsx'
 
 const gentsSwatches = [
   { color: '#0a0a0a', border: false },
-  { color: '#fff',    border: true },
 ]
 
 const swatches = [
+  { color: '#fff',    border: true },
   { color: '#E8DCC8', border: false },
   { color: '#DDCFC2', border: false },
   { color: '#E8B0B4', border: false },
@@ -300,22 +300,18 @@ function DressCode() {
           Ми будемо безмежно вдячні, якщо при виборі вбрання ви підтримаєте кольорову палітру нашого свята
         </p>
         <div className="swatches">
-          {/* Grouped gents swatches with single label */}
-          <div className="swatch-wrapper">
-            <div className="swatches-gents-row">
-              {gentsSwatches.map((s, i) => (
-                <div
-                  key={i}
-                  className="swatch"
-                  style={{
-                    backgroundColor: s.color,
-                    border: s.border ? '1px solid #C8C4BC' : 'none',
-                  }}
-                />
-              ))}
+          {gentsSwatches.map((s, i) => (
+            <div className="swatch-wrapper" key={`g${i}`}>
+              <div
+                className="swatch"
+                style={{
+                  backgroundColor: s.color,
+                  border: s.border ? '1px solid #C8C4BC' : 'none',
+                }}
+              />
+              <span className="swatch-label">джентльмени</span>
             </div>
-            <span className="swatch-label">тільки джентльмени</span>
-          </div>
+          ))}
 
           {swatches.map((s, i) => (
             <div className="swatch-wrapper" key={i}>
