@@ -9,6 +9,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'BickhamScriptPro';
+  src: url('/fonts/BickhamScriptPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ============================================================
    Splash / Envelope Screen
    ============================================================ */
@@ -352,8 +360,8 @@ body {
 
 .hero-bottom-text {
   font-family: var(--font-sans);
-  font-size: 10px;
-  font-weight: 400;
+  font-size: 8px;
+  font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: rgb(196, 163, 90);
@@ -365,6 +373,30 @@ body {
   font-size: 48px;
   color: #fff;
   line-height: 1.1;
+}
+
+.hero-names-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-branch {
+  position: absolute;
+  bottom: -45px;
+  left: 50%;
+  transform: translateX(-50%) rotate(40deg);
+  width: 80px;
+  aspect-ratio: 1;
+  background-color: var(--gold);
+  mask-image: url('/src/assets/branch.svg');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url('/src/assets/branch.svg');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  opacity: 0.85;
 }
 
 .hero-names {

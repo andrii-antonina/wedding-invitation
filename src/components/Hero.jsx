@@ -76,7 +76,10 @@ function Hero() {
           </svg>
         </div>
         <div className="hero-bottom-block">
-          <p className="hero-top-date">Андрій та Антоніна</p>
+          <div className="hero-names-wrap">
+            <p className="hero-top-date">Андрій та Антоніна</p>
+            <div className="hero-branch" />
+          </div>
           <HeroCountdown />
           <div className="hero-bottom-caption">
             <span className="hero-scroll-arrow">↓</span>
