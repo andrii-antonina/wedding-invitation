@@ -293,9 +293,9 @@ body {
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(35, 22, 3, 0.50) 0%,
-    rgba(42, 27, 3, 0.18) 40%,
-    rgba(33, 20, 2, 0.78) 100%
+    rgba(35, 22, 3, 0.65) 0%,
+    rgba(42, 27, 3, 0.35) 40%,
+    rgba(33, 20, 2, 0.88) 100%
   );
 }
 
@@ -1479,7 +1479,7 @@ body {
   }
 
   .hero-top-date {
-    font-size: 36px;
+    font-size: 46px;
   }
 
   .hero-names-wrap {
@@ -1488,21 +1488,21 @@ body {
 
 
   .hero-countdown-label {
-    font-size: 8px;
+    font-size: 9px;
     letter-spacing: 2px;
   }
 
   .hero-countdown-unit {
-    min-width: 58px;
-    padding: 8px 6px 6px;
+    min-width: 68px;
+    padding: 10px 8px 8px;
   }
 
   .hero-countdown-num {
-    font-size: 28px;
+    font-size: 34px;
   }
 
   .hero-countdown-key {
-    font-size: 7px;
+    font-size: 8px;
   }
 
   .hero-scroll-arrow {

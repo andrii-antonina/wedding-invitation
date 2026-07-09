@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import heroPhoto from '../assets/hero.jpg'
 
 const WEDDING_DATE = new Date('2026-09-13T00:00:00')
@@ -46,8 +46,14 @@ function HeroCountdown() {
 }
 
 function Hero() {
+  const sectionRef = useRef(null)
+  useEffect(() => {
+    const el = sectionRef.current
+    if (el) el.style.height = window.innerHeight + 'px'
+  }, [])
+
   return (
-    <section className="hero-section">
+    <section className="hero-section" ref={sectionRef}>
       {/* Background photo */}
       <img className="hero-bg" src={heroPhoto} alt="Андрій та Антоніна" />
 
