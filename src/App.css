@@ -285,9 +285,9 @@ body {
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.45) 0%,
-    rgba(0, 0, 0, 0.2) 40%,
-    rgba(0, 0, 0, 0.55) 100%
+    rgba(30, 20, 5, 0.50) 0%,
+    rgba(40, 25, 5, 0.18) 40%,
+    rgba(30, 18, 0, 0.62) 100%
   );
 }
 
@@ -312,6 +312,13 @@ body {
   gap: 46px;
 }
 
+.hero-top-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
 .hero-top-invite {
   font-family: var(--font-sans);
   font-size: 11px;
@@ -319,6 +326,38 @@ body {
   letter-spacing: 3px;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  line-height: 2;
+}
+
+.hero-top-leaf {
+  width: 160px;
+  height: auto;
+  color: var(--gold);
+}
+
+.hero-bottom-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.hero-scroll-arrow {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  color: rgba(196, 163, 90, 0.9);
+  line-height: 1;
+}
+
+.hero-bottom-text {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgb(196, 163, 90);
+  text-align: center;
 }
 
 .hero-top-date {
@@ -1286,8 +1325,16 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.45);
   border-radius: 10px;
   padding: 12px 8px 8px;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
   background: rgba(0, 0, 0, 0.15);
+}
+
+.hero-countdown-dot {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1;
+  align-self: center;
 }
 
 .hero-countdown-num {
