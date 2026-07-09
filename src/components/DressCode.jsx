@@ -309,7 +309,7 @@ function DressCode() {
                   border: s.border ? '1px solid #C8C4BC' : 'none',
                 }}
               />
-              <span className="swatch-label">джентльмени</span>
+              <span className="swatch-label">тільки джентльмени</span>
             </div>
           ))}
 
