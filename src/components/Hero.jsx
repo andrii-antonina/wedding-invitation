@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import heroPhoto from '../assets/hero.jpg'
 
 const WEDDING_DATE = new Date('2026-09-13T00:00:00')
 
@@ -54,9 +55,7 @@ function Hero() {
 
       {/* Full-screen photo */}
       <div className="hero-photo">
-        <div className="hero-photo-placeholder">
-          <span>Ваше фото</span>
-        </div>
+        <img src={heroPhoto} alt="Андрій та Антоніна" />
       </div>
 
       {/* Bottom bar */}
