@@ -83,7 +83,7 @@ function Hero() {
         </div>
         <div className="hero-bottom-block">
           <div className="hero-names-wrap">
-            <p className="hero-top-date">Андрій та Антоніна Е</p>
+          <p className="hero-top-date">Андрій та Антоніна К</p>
           </div>
           <HeroCountdown />
         </div>
