@@ -339,7 +339,7 @@ body {
   font-weight: 500;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.8);
   text-align: center;
   line-height: 2;
 }
@@ -1478,7 +1478,7 @@ body {
   }
 
   .hero-top-invite {
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 2px;
   }
 
@@ -1499,12 +1499,12 @@ body {
   }
 
   .hero-names-wrap {
-    transform: translateY(-20px);
+    transform: translateY(-8px);
   }
 
 
   .hero-countdown-label {
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 2px;
   }
 
