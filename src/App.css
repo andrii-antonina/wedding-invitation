@@ -1462,6 +1462,16 @@ body {
     padding: 64px 20px;
   }
 
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(15, 10, 2, 0.75) 0%,
+      rgba(20, 13, 2, 0.25) 35%,
+      rgba(20, 13, 2, 0.45) 60%,
+      rgba(10, 6, 0, 0.96) 100%
+    );
+  }
+
   .section-title {
     font-size: 34px;
     margin-bottom: 36px;
