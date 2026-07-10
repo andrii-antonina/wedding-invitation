@@ -87,10 +87,6 @@ function Hero() {
             <div className="hero-branch" />
           </div>
           <HeroCountdown />
-          <div className="hero-bottom-caption">
-            <span className="hero-scroll-arrow">↓</span>
-            <p className="hero-bottom-text">Наш найважливіший день ми хочемо розділити з вами ♥ </p>
-          </div>
         </div>
       </div>
     </section>

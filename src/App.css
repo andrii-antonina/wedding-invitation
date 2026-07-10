@@ -1483,7 +1483,7 @@ body {
   }
 
   .hero-names-wrap {
-    transform: translateY(-44px);
+    transform: translateY(-26px);
   }
 
 
@@ -1493,12 +1493,12 @@ body {
   }
 
   .hero-countdown-unit {
-    min-width: 68px;
+    min-width: 73px;
     padding: 10px 8px 8px;
   }
 
   .hero-countdown-num {
-    font-size: 34px;
+    font-size: 36px;
   }
 
   .hero-countdown-key {
