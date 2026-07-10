@@ -1,16 +1,34 @@
 import { useState } from 'react'
 import Ornament from './Ornament.jsx'
 
+const ACCESS_KEY = '22528020-4177-448f-a2ef-a00df5f2e716'
+
 function RSVP() {
   const [name, setName] = useState('')
   const [attendance, setAttendance] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const isValid = name.trim().length > 0 && attendance !== ''
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
     if (!isValid) return
+    setLoading(true)
+    try {
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: ACCESS_KEY,
+          name,
+          attendance: attendance === 'yes' ? 'Прийде' : 'Не зможе прийти',
+        }),
+      })
+    } catch (_) {
+      // відправляємо навіть якщо помилка мережі
+    }
+    setLoading(false)
     setSubmitted(true)
   }
 
@@ -33,59 +51,59 @@ function RSVP() {
             {submitted ? (
               <div className="rsvp-thanks">{thanksMessage}</div>
             ) : (
-              <form className="rsvp-form" onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label className="form-label" htmlFor="rsvp-name">
-                    Ваше ім&apos;я та прізвище
-                  </label>
-                  <input
-                    id="rsvp-name"
-                    className="form-input"
-                    type="text"
-                    placeholder="Будь ласка, вкажіть..."
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </div>
-                <div className="form-group">
-                  <span className="form-label">ЧИ ЗМОЖЕШ ТИ РОЗДІЛИТИ З НАМИ ЦЕЙ ОСОБЛИВИЙ ДЕНЬ?</span>
-                  <div className="radio-group">
-                    <label className="radio-option" htmlFor="rsvp-yes">
-                      <input
-                        id="rsvp-yes"
-                        className="radio-input"
-                        type="radio"
-                        name="attendance"
-                        value="yes"
-                        checked={attendance === 'yes'}
-                        onChange={() => setAttendance('yes')}
-                      />
-                      <div className={`radio-circle${attendance === 'yes' ? ' selected' : ''}`}>
-                        {attendance === 'yes' && <div className="radio-circle-inner" />}
-                      </div>
-                      <span className="radio-text">Прийду з радістю</span>
+                <form className="rsvp-form" onSubmit={handleSubmit}>
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="rsvp-name">
+                      Ваше ім&apos;я та прізвище
                     </label>
-                    <label className="radio-option" htmlFor="rsvp-no">
-                      <input
-                        id="rsvp-no"
-                        className="radio-input"
-                        type="radio"
-                        name="attendance"
-                        value="no"
-                        checked={attendance === 'no'}
-                        onChange={() => setAttendance('no')}
-                      />
-                      <div className={`radio-circle${attendance === 'no' ? ' selected' : ''}`}>
-                        {attendance === 'no' && <div className="radio-circle-inner" />}
-                      </div>
-                      <span className="radio-text">На жаль, не зможу прийти</span>
-                    </label>
+                    <input
+                        id="rsvp-name"
+                        className="form-input"
+                        type="text"
+                        placeholder="Будь ласка, вкажіть..."
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
                   </div>
-                </div>
-                <button className="btn-submit" type="submit" disabled={!isValid}>
-                  ВІДПРАВИТИ ВІДПОВІДЬ
-                </button>
-              </form>
+                  <div className="form-group">
+                    <span className="form-label">ЧИ ЗМОЖЕШ ТИ РОЗДІЛИТИ З НАМИ ЦЕЙ ОСОБЛИВИЙ ДЕНЬ?</span>
+                    <div className="radio-group">
+                      <label className="radio-option" htmlFor="rsvp-yes">
+                        <input
+                            id="rsvp-yes"
+                            className="radio-input"
+                            type="radio"
+                            name="attendance"
+                            value="yes"
+                            checked={attendance === 'yes'}
+                            onChange={() => setAttendance('yes')}
+                        />
+                        <div className={`radio-circle${attendance === 'yes' ? ' selected' : ''}`}>
+                          {attendance === 'yes' && <div className="radio-circle-inner"/>}
+                        </div>
+                        <span className="radio-text">Прийду з радістю</span>
+                      </label>
+                      <label className="radio-option" htmlFor="rsvp-no">
+                        <input
+                            id="rsvp-no"
+                            className="radio-input"
+                            type="radio"
+                            name="attendance"
+                            value="no"
+                            checked={attendance === 'no'}
+                            onChange={() => setAttendance('no')}
+                        />
+                        <div className={`radio-circle${attendance === 'no' ? ' selected' : ''}`}>
+                          {attendance === 'no' && <div className="radio-circle-inner"/>}
+                        </div>
+                        <span className="radio-text">На жаль, не зможу прийти</span>
+                      </label>
+                    </div>
+                  </div>
+                  <button className="btn-submit" type="submit" disabled={!isValid || loading}>
+                    {loading ? 'НАДСИЛАЄМО...' : 'ВІДПРАВИТИ ВІДПОВІДЬ'}
+                  </button>
+                </form>
             )}
           </div>
         </div>
